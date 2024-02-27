@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateSecretarioController = void 0;
 const payLoad_1 = require("../../../../config/payLoad");
 const yup_1 = require("../../../../config/yup");
-const index_1 = require("../../../../error/index");
 class CreateSecretarioController {
     constructor(createSecretarioUseCase) {
         this.createSecretarioUseCase = createSecretarioUseCase;
@@ -21,7 +20,7 @@ class CreateSecretarioController {
             });
         }
         catch (error) {
-            throw new index_1.ServerError(error.message, 400);
+            return res.status(400).json({ message: error.message });
         }
     }
 }
