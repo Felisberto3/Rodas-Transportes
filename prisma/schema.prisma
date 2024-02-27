@@ -1,0 +1,126 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Aluno {
+  id             Int          @id @default(autoincrement())
+  nomeCompleto   String
+  email          String?      @unique
+  processo       String       @unique
+  classe         String
+  turma          String
+  dataNascimento String
+  adress_id      String
+  Calendario     Calendario[]
+  address        Address?     @relation(fields: [addressId], references: [id])
+  addressId      Int?         @unique
+  Telefone       Telefone[]
+  Pagamento      Pagamento[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @default(now())
+}
+
+model Calendario {
+  id        Int      @id @default(autoincrement())
+  mes       String
+  aluno     Aluno    @relation(fields: [alunoId], references: [id])
+  alunoId   Int
+  ano       Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Secretario {
+  id           Int        @id @default(autoincrement())
+  primeiroNome String
+  sobrenome    String
+  email        String     @unique
+  password     String
+  mainAdmin    Boolean    @default(false)
+  address      Address?   @relation(fields: [addressId], references: [id])
+  addressId    Int?       @unique
+  Telefone     Telefone[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @default(now())
+}
+
+model Address {
+  id         Int         @id @default(autoincrement())
+  provincia  String
+  municipio  String
+  bairro     String
+  rua        String
+  secretario Secretario?
+  aluno      Aluno?
+}
+
+model Telefone {
+  id           Int         @id @default(autoincrement())
+  numero       String
+  aluno        Aluno?      @relation(fields: [alunoId], references: [id])
+  alunoId      Int?
+  secretario   Secretario? @relation(fields: [secretarioId], references: [id])
+  secretarioId Int?
+}
+
+model ContasBancarias {
+  id            Int    @id @default(autoincrement())
+  numeroDaConta String
+  nomeDaConta   String
+}
+
+enum TipoDePagamentoEnum {
+  multicaixa
+  deposito
+}
+
+model Pagamento {
+  Numerofactura   String              @id
+  TipoDePagamento TipoDePagamentoEnum
+  multa           Multa               @relation(fields: [multaId], references: [id])
+  multaId         Int
+  propina         Propina             @relation(fields: [propinaId], references: [id])
+  propinaId       Int
+  meses           String
+  totalRecebido   Decimal
+  descontos       Descontos           @relation(fields: [descontosId], references: [id])
+  descontosId     Int
+  quantidade      Int
+  aluno           Aluno               @relation(fields: [alunoId], references: [id])
+  alunoId         Int
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @default(now())
+}
+
+model Descontos {
+  id        Int         @id @default(autoincrement())
+  descricao String      @unique
+  valor     Decimal     @default(0.0)
+  Pagamento Pagamento[]
+}
+
+model Propina {
+  id        Int         @id @default(autoincrement())
+  descricao String      @unique
+  valor     Decimal
+  Pagamento Pagamento[]
+}
+
+model Multa {
+  id        Int         @id @default(autoincrement())
+  descricao String      @unique
+  valor     Decimal     @default(0.0)
+  Pagamento Pagamento[]
+}
+
