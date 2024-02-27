@@ -23,7 +23,7 @@ class CreateSecretarioController {
                 token
             })
         } catch (error: any) {
-            throw new ServerError(error.message, 400)
+            return res.status(400).json({message: error.message})
         }
     }
 }
