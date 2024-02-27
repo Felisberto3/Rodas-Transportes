@@ -5,8 +5,4 @@ const express_1 = require("express");
 const secretarios_routes_1 = require("./secretarios.routes");
 const router = (0, express_1.Router)();
 exports.router = router;
-// router.get((req:Request, res:Response)=>{
-//     console.log('valeu')
-// }
-// )
 router.use('/secretario', secretarios_routes_1.secretarioRouter);

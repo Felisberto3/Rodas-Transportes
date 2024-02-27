@@ -2,7 +2,7 @@ import { CreateSecretarioUseCase } from "./createSecretarioUseCase";
 import { Request, Response } from "express";
 import { payLoadGenerator } from "../../../../config/payLoad";
 import { createsecretarioSchema } from "../../../../config/yup";
-import { ServerError } from "error";
+import { ServerError } from "../../../../error/index";
 
 class CreateSecretarioController {
     constructor(private createSecretarioUseCase: CreateSecretarioUseCase ) { }
