@@ -3,6 +3,10 @@ import { secretarioRouter } from "./secretarios.routes";
 
 const router = Router()
 
-router.use('secretario',secretarioRouter)
+// router.get((req:Request, res:Response)=>{
+//     console.log('valeu')
+// }
+// )
+router.use('/secretario',secretarioRouter)
 
 export { router }
