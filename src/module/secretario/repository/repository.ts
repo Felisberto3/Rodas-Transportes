@@ -1,4 +1,4 @@
-import { prisma } from "config/prisma";
+import { prisma } from "../../../config/prisma";
 import { SecretariorepositoryDto, createSecretarioDto, updateSecretarioDto } from "./interface";
 import { Secretario } from "@prisma/client";
 
