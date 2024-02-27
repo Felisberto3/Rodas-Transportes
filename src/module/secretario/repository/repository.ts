@@ -13,6 +13,10 @@ class SecretarioRepository implements SecretariorepositoryDto {
         }
         return await prisma.secretario.findFirst({ where: { id } })
     }
+
+    async findByEmail(email: string) {
+        return await prisma.secretario.findUnique({ where : { email }})
+    }
     async update({ id, ...data}: updateSecretarioDto): Promise<Boolean > {
         await prisma.secretario.update({ where: { id  }, data })
         return true
