@@ -6,3 +6,5 @@ const secretarioRouter = Router()
 secretarioRouter.post('/create', async (req:Request, res: Response) => {
     return await createSecretario.handle(req,res)
 })
+
+export { secretarioRouter }
