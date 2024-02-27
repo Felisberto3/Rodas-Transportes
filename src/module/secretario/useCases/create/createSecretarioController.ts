@@ -11,6 +11,7 @@ class CreateSecretarioController {
 
         const { email, id, mainAdmin } = secretario
         const token = payLoadGenerator({ email, id, mainAdmin })
+        
         res.status(201).json({
             secretario,
             token
