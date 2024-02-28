@@ -1,9 +1,9 @@
 import { PropinaRepository } from "../../repository/repository"
-import { CreatePropinaUseCase } from "./getPropinaUseCase"
-import { CreatePropinaController } from "./getPropinaController"
+import { GetPropinaUseCase } from "./getPropinaUseCase"
+import { GetPropinaController } from "./getPropinaController"
 
 const propinaRepository = new PropinaRepository()
-const createPropinaUseCase = new CreatePropinaUseCase(propinaRepository)
-const createPropina = new CreatePropinaController(createPropinaUseCase)
+const getPropinaUseCase = new GetPropinaUseCase(propinaRepository)
+const GetPropina = new GetPropinaController(getPropinaUseCase)
 
-export { createPropina }
+export { GetPropina }
