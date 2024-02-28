@@ -11,7 +11,7 @@ pagamentoRouter.post('/create', async (req:Request, res:Response) => {
     return await createPagamento.handle(req,res)
 })
 
-pagamentoRouter.get('/get/:id', async (req:Request, res:Response) => {
+pagamentoRouter.get('/get/:numeroDeFactura', async (req:Request, res:Response) => {
     return await getPagamento.handle(req,res)
 })
 

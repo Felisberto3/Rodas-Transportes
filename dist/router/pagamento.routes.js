@@ -11,7 +11,7 @@ exports.pagamentoRouter = pagamentoRouter;
 pagamentoRouter.post('/create', async (req, res) => {
     return await create_1.createPagamento.handle(req, res);
 });
-pagamentoRouter.get('/get/:id', async (req, res) => {
+pagamentoRouter.get('/get/:numeroDeFactura', async (req, res) => {
     return await get_1.getPagamento.handle(req, res);
 });
 pagamentoRouter.put('/put/:id', auth_1.authUser, async (req, res) => {
