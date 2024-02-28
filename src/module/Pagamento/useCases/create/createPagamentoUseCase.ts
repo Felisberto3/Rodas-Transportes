@@ -15,6 +15,7 @@ class CreatePagamentoUseCase {
         try {
             // const numeroDeFactura = geraNumeroDeFactura()
             // numeroDeFactura
+            const mesesPagos = mes.split(',')
             const currentYear = new Date().getFullYear()
 
             const pagamenntos = await this.pagamentoRepository.getByYear(currentYear)
@@ -24,8 +25,8 @@ class CreatePagamentoUseCase {
 
                 const novaFactura =  await this.pagamentoRepository.create({ numeroDeFactura,mes, ...data })
                 
-                for (let i = 0; i < novaFactura.quantidade; i++) {
-                    await this.calendarioRepository.create({ data: novaFactura.createdAt, alunoId: data.alunoId })
+                for (const mes of mesesPagos) {
+                    await this.calendarioRepository.create({ mes, alunoId: data.alunoId })
                 }
 
                 return novaFactura
@@ -40,8 +41,9 @@ class CreatePagamentoUseCase {
 
             const novaFactura =  await this.pagamentoRepository.create({ numeroDeFactura,mes, ...data })
 
-            for (let i = 0; i < novaFactura.quantidade; i++) {
-                await this.calendarioRepository.create({ data: novaFactura.createdAt, alunoId: data.alunoId })
+
+            for (const mes of mesesPagos) {
+                await this.calendarioRepository.create({ mes, alunoId: data.alunoId })
             }
 
             return novaFactura

@@ -1,12 +1,12 @@
 import { Calendario } from '@prisma/client'
 interface createCalendarioDto {
-    data: Date;
+    mes: string;
     alunoId: number;
 }
 
 interface updateCalendarioDto {
     id: number;
-    data: Date;
+    mes: string;
     alunoId: number;
 }
 

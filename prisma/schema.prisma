@@ -57,7 +57,7 @@ model Address {
 
 model Calendario {
   id        Int      @id @default(autoincrement())
-  data      DateTime @default(now())
+  mes       String
   aluno     Aluno    @relation(fields: [alunoId], references: [id])
   alunoId   Int
   createdAt DateTime @default(now())
