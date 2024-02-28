@@ -2,7 +2,9 @@ import { prisma } from "../../../config/prisma";
 import { PagamentorepositoryDto, createPagamentoDto, updatePagamentoDto } from "./interface";
 import { Pagamento } from "@prisma/client";
 
-interface createFact extends createPagamentoDto { numeroDeFactura: string }
+interface createFact extends createPagamentoDto {
+     numeroDeFactura: string
+}
 
 
 class PagamentoRepository implements PagamentorepositoryDto {

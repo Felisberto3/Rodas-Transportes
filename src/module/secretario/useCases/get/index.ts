@@ -1,10 +1,10 @@
-import { CalendarioRepository } from "../../repository/repository"
-import { GetCalendarioController } from "./getSecretarioController"
-import { GetCalendarioUseCase } from "./getSecretarioUseCase"
+import { SecretarioRepository } from "../../repository/repository"
+import { GetSecretarioController } from "./getSecretarioController"
+import { GetSecretarioUseCase } from "./getSecretarioUseCase"
 
 
-const calendarioRepository = new CalendarioRepository()
-const getCalendarioUseCase = new GetCalendarioUseCase(calendarioRepository)
-const getCalendario = new GetCalendarioController(getCalendarioUseCase)
+const secretarioRepository = new SecretarioRepository()
+const getSecretarioUseCase = new GetSecretarioUseCase(secretarioRepository)
+const getSecretario = new GetSecretarioController(getSecretarioUseCase)
 
-export { getCalendario }
+export { getSecretario }

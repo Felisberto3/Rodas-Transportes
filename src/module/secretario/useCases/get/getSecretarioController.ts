@@ -8,8 +8,6 @@ class GetSecretarioController {
         const { id } = req.params
 
         try {
-
-
             const Secretario = await this.getSecretarioUseCase.execute(Number(id))
 
 

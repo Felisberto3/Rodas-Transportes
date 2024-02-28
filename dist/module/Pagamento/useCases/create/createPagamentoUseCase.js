@@ -17,7 +17,9 @@ class CreatePagamentoUseCase {
             if (!pagamenntos.length) {
                 const numeroDeFactura = 1 + '.' + (0, geraNumeroDeFactura_1.geraNumeroDeFactura)();
                 const novaFactura = await this.pagamentoRepository.create({ numeroDeFactura, mes, ...data });
-                await this.calendarioRepository.create({ data: novaFactura.createdAt, alunoId: data.alunoId });
+                for (let i = 0; i < novaFactura.quantidade; i++) {
+                    await this.calendarioRepository.create({ data: novaFactura.createdAt, alunoId: data.alunoId });
+                }
                 return novaFactura;
             }
             const ultimoPagamento = pagamenntos[pagamenntos.length - 1];
@@ -25,7 +27,9 @@ class CreatePagamentoUseCase {
             const novoId = Number(id) + 1;
             const numeroDeFactura = novoId + '.' + (0, geraNumeroDeFactura_1.geraNumeroDeFactura)();
             const novaFactura = await this.pagamentoRepository.create({ numeroDeFactura, mes, ...data });
-            await this.calendarioRepository.create({ data: novaFactura.createdAt, alunoId: data.alunoId });
+            for (let i = 0; i < novaFactura.quantidade; i++) {
+                await this.calendarioRepository.create({ data: novaFactura.createdAt, alunoId: data.alunoId });
+            }
             return novaFactura;
         }
         catch (error) {
