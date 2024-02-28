@@ -1,17 +1,17 @@
 import { ServerError } from "../../../../error/index";
-import { PropinaRepository } from "../../repository/repository";
+import { MultaRepository } from "../../repository/repository";
 
-class GetPropinaUseCase {
-    constructor(private PropinaRepository: PropinaRepository) { }
+class GetMultaUseCase {
+    constructor(private MultaRepository: MultaRepository) { }
 
     async execute(id: number){
 
         try {
-            return await this.PropinaRepository.get(id)
+            return await this.MultaRepository.get(id)
         } catch (error) {
-            throw new ServerError("Falha ao criar a propina", 400);
+            throw new ServerError("Falha ao criar a Multa", 400);
         }
     }
 }
 
-export { GetPropinaUseCase }
+export { GetMultaUseCase }

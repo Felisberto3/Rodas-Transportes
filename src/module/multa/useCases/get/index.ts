@@ -1,9 +1,9 @@
-import { PropinaRepository } from "../../repository/repository"
-import { GetPropinaUseCase } from "./getPropinaUseCase"
-import { GetPropinaController } from "./getPropinaController"
+import { MultaRepository } from "../../repository/repository"
+import { GetMultaUseCase } from "./getMultaUseCase"
+import { GetMultaController } from "./getMultaController"
 
-const propinaRepository = new PropinaRepository()
-const getPropinaUseCase = new GetPropinaUseCase(propinaRepository)
-const getPropina = new GetPropinaController(getPropinaUseCase)
+const multaRepository = new MultaRepository()
+const getMultaUseCase = new GetMultaUseCase(multaRepository)
+const getMulta = new GetMultaController(getMultaUseCase)
 
-export { getPropina }
+export { getMulta }
