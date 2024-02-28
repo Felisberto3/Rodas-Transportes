@@ -1,18 +1,16 @@
 import { Request, Response } from "express";
-import { createAlunoSchema } from "../../../../config/yup";
-import { CreateAlunoUseCase } from "./getAlunoUseCase";
+// import { GetAlunoSchema } from "../../../../config/yup";
+import { GetAlunoUseCase } from "./getAlunoUseCase";
 
-class CreateAlunoController {
-    constructor(private createAlunoUseCase: CreateAlunoUseCase ) { }
+class GetAlunoController {
+    constructor(private getAlunoUseCase: GetAlunoUseCase ) { }
 
     async handle(req: Request, res: Response ) {
-        const data = req.body
+        const { id } = req.params
 
         try {
-            await createAlunoSchema.validate(data)
 
-
-            const Aluno = await this.createAlunoUseCase.execute(data)
+            const Aluno = await this.getAlunoUseCase.execute(Number(id))
     
             res.status(201).json({
                 Aluno
@@ -23,4 +21,4 @@ class CreateAlunoController {
     }
 }
 
-export { CreateAlunoController }
+export { GetAlunoController }
