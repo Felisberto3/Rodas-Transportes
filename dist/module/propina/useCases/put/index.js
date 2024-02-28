@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPropina = void 0;
+exports.PutPropina = void 0;
 const repository_1 = require("../../repository/repository");
 const putPropinaUseCase_1 = require("./putPropinaUseCase");
 const putPropinaController_1 = require("./putPropinaController");
 const propinaRepository = new repository_1.PropinaRepository();
-const getPropinaUseCase = new putPropinaUseCase_1.GetPropinaUseCase(propinaRepository);
-const getPropina = new putPropinaController_1.GetPropinaController(getPropinaUseCase);
-exports.getPropina = getPropina;
+const putPropinaUseCase = new putPropinaUseCase_1.PutPropinaUseCase(propinaRepository);
+const PutPropina = new putPropinaController_1.PutPropinaController(putPropinaUseCase);
+exports.PutPropina = PutPropina;
