@@ -9,6 +9,7 @@ const address_routes_1 = require("./address.routes");
 const router = (0, express_1.Router)();
 exports.router = router;
 router.use('/secretario', secretarios_routes_1.secretarioRouter);
+router.use('/aluno', secretarios_routes_1.secretarioRouter);
 router.use('/propina', propina_routes_1.propinaRouter);
 router.use('/multa', multa_routes_1.multaRouter);
 router.use('/address', address_routes_1.addressRouter);
