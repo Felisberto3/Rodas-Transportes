@@ -15,9 +15,10 @@ datasource db {
 
 model Aluno {
   id             Int          @id @default(autoincrement())
+  processo       String       @unique
+  BI             String       @unique
   nomeCompleto   String
   email          String?      @unique
-  processo       String       @unique
   classe         String
   turma          String
   dataNascimento String
@@ -123,4 +124,3 @@ model Multa {
   valor     Decimal     @default(0.0)
   Pagamento Pagamento[]
 }
-
