@@ -1,22 +1,13 @@
-import { hash } from "bcrypt";
-import { ServerError } from "../../../../error/index";
-import { createSecretarioDto } from "../../repository/interface";
-import { SecretarioRepository } from "../../repository/repository";
+import { createPropinaDto } from "../../repository/interface";
+import { PropinaRepository } from "../../repository/repository";
 
-class CreateSecretarioUseCase {
-    constructor(private secretarioRepository: SecretarioRepository) { }
+class CreatePropinaUseCase {
+    constructor(private PropinaRepository: PropinaRepository) { }
 
-    async execute({ email,password, ...data}: createSecretarioDto){
-        const userExist = await this.secretarioRepository.findByEmail(email)
+    async execute(data: createPropinaDto){
 
-        if (userExist) {
-            throw new ServerError('secretario já existe', 400)
-        }
-
-        password = await hash(password, 8)
-
-        return await this.secretarioRepository.create({ email, password, ...data })
+        return await this.PropinaRepository.create(data)
     }
 }
 
-export { CreateSecretarioUseCase }
+export { CreatePropinaUseCase }

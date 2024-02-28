@@ -7,6 +7,7 @@ class PropinaRepository implements PropinarepositoryDto {
         return await prisma.propina.create({ data })
     }
 
+
     async get(id: number): Promise<Propina | Propina[] | null> {
         if (!id) {
             return await prisma.propina.findMany()

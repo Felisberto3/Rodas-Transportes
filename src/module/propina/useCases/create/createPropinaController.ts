@@ -1,32 +1,25 @@
-import { CreateSecretarioUseCase } from "./createSecretarioUseCase";
+import { CreatePropinaUseCase } from "./createPropinaUseCase";
 import { Request, Response } from "express";
 import { payLoadGenerator } from "../../../../config/payLoad";
-import { createsecretarioSchema } from "../../../../config/yup";
+import { createPropinaSchema } from "../../../../config/yup";
 
-class CreateSecretarioController {
-    constructor(private createSecretarioUseCase: CreateSecretarioUseCase ) { }
+class CreatePropinaController {
+    constructor(private createPropinaUseCase: CreatePropinaUseCase ) { }
 
     async handle(req: Request, res: Response ) {
         const data = req.body
 
         try {
-            console.log(data);
-            
-            await createsecretarioSchema.validate(data)
+            await createPropinaSchema.validate(data)
 
-            const secretario = await this.createSecretarioUseCase.execute(data)
+            const Propina = await this.createPropinaUseCase.execute(data)
     
-            const { email, id, mainAdmin } = secretario
-            const token = payLoadGenerator({ email, id, mainAdmin })
             
-            res.status(201).json({
-                secretario,
-                token
-            })
+            res.status(201).json(Propina)
         } catch (error: any) {
             return res.status(400).json({message: error.message})
         }
     }
 }
 
-export { CreateSecretarioController }
+export { CreatePropinaController }

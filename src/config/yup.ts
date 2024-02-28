@@ -8,4 +8,9 @@ const createsecretarioSchema = yup.object({
     addressId: yup.number()
 })
 
-export { createsecretarioSchema }
+const createPropinaSchema = yup.object({
+    valor: yup.number().required(),
+    descricao:yup.string().required(),  
+})
+
+export { createsecretarioSchema, createPropinaSchema }
