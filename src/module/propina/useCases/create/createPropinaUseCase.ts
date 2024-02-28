@@ -1,3 +1,4 @@
+import { ServerError } from "error";
 import { createPropinaDto } from "../../repository/interface";
 import { PropinaRepository } from "../../repository/repository";
 
@@ -6,7 +7,11 @@ class CreatePropinaUseCase {
 
     async execute(data: createPropinaDto){
 
-        return await this.PropinaRepository.create(data)
+        try {
+            return await this.PropinaRepository.create(data)
+        } catch (error) {
+            throw new ServerError("Falha ao criar a propina", 400);
+        }
     }
 }
 
