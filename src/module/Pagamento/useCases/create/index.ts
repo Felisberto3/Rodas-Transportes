@@ -1,6 +1,6 @@
 import { PagamentoRepository } from "../../repository/repository"
-import { CreatePagamentoUseCase } from "./createPropinaUseCase"
-import { CreatePagamentoController } from "./createPropinaController"
+import { CreatePagamentoUseCase } from "./createPagamentoUseCase"
+import { CreatePagamentoController } from "./createPagamentoController"
 
 
 const pagamentoRepository = new PagamentoRepository()

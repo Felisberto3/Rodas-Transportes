@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { GetPagamentoUseCase } from "./getPropinaUseCase";
+import { GetPagamentoUseCase } from "./getPagamentoUseCase";
 
 class GetPagamentoController {
     constructor(private getPagamentoUseCase: GetPagamentoUseCase ) { }

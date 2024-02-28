@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreatePagamentoUseCase } from "./createPropinaUseCase";
+import { CreatePagamentoUseCase } from "./createPagamentoUseCase";
 import { createPagamentoSchema } from "../../../../config/yup";
 
 class CreatePagamentoController {
