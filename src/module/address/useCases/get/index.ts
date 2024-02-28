@@ -1,9 +1,9 @@
-import { PropinaRepository } from "../../repository/repository"
-import { GetPropinaUseCase } from "./getPropinaUseCase"
-import { GetPropinaController } from "./getPropinaController"
+import { AddressRepository } from "../../repository/repository"
+import { GetAddressUseCase } from "./getAddressUseCase"
+import { GetAddressController } from "./getAddressController"
 
-const propinaRepository = new PropinaRepository()
-const getPropinaUseCase = new GetPropinaUseCase(propinaRepository)
-const getPropina = new GetPropinaController(getPropinaUseCase)
+const addressRepository = new AddressRepository()
+const getAddressUseCase = new GetAddressUseCase(addressRepository)
+const getAddress = new GetAddressController(getAddressUseCase)
 
-export { getPropina }
+export { getAddress }

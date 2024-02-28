@@ -1,9 +1,9 @@
-import { PropinaRepository } from "../../repository/repository"
-import { PutPropinaUseCase } from "./putPropinaUseCase"
-import { PutPropinaController } from "./putPropinaController"
+import { AddressRepository } from "../../repository/repository"
+import { PutAddressUseCase } from "./putAddressUseCase"
+import { PutAddressController } from "./putAddressController"
 
-const propinaRepository = new PropinaRepository()
-const putPropinaUseCase = new PutPropinaUseCase(propinaRepository)
-const PutPropina = new PutPropinaController(putPropinaUseCase)
+const addressRepository = new AddressRepository()
+const putAddressUseCase = new PutAddressUseCase(addressRepository)
+const PutAddress = new PutAddressController(putAddressUseCase)
 
-export { PutPropina }
+export { PutAddress }

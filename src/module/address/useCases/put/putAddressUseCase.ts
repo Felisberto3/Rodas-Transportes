@@ -1,18 +1,18 @@
-import { updatePropinaDto } from "../../repository/interface";
+import { updateAddressDto } from "../../repository/interface";
 import { ServerError } from "../../../../error/index";
-import { PropinaRepository } from "../../repository/repository";
+import { AddressRepository } from "../../repository/repository";
 
-class PutPropinaUseCase {
-    constructor(private propinaRepository: PropinaRepository) { }
+class PutAddressUseCase {
+    constructor(private addressRepository: AddressRepository) { }
 
-    async execute(data: updatePropinaDto){
+    async execute(data: updateAddressDto){
 
         try {
-            return await this.propinaRepository.update(data)
+            return await this.addressRepository.update(data)
         } catch (error) {
-            throw new ServerError("Falha ao criar a propina", 400);
+            throw new ServerError("Falha ao criar a Address", 400);
         }
     }
 }
 
-export { PutPropinaUseCase }
+export { PutAddressUseCase }

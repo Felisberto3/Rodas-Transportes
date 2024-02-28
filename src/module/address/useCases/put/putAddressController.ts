@@ -1,8 +1,8 @@
-import { PutPropinaUseCase } from "./putPropinaUseCase";
+import { PutAddressUseCase } from "./putAddressUseCase";
 import { Request, Response } from "express";
 
-class PutPropinaController {
-    constructor(private putPropinaUseCase: PutPropinaUseCase) { }
+class PutAddressController {
+    constructor(private putAddressUseCase: PutAddressUseCase) { }
 
     async handle(req: Request, res: Response) {
         const { id } = req.params
@@ -12,12 +12,12 @@ class PutPropinaController {
         try {
 
             if (!mainAdmin) {
-                return res.status(400).json({ message:"Apenas a administradora pode actualizar as propinas"})
+                return res.status(400).json({ message:"Apenas a administradora pode actualizar as Addresss"})
             }
 
-            const Propina = await this.putPropinaUseCase.execute({id, ...req.body})
+            const Address = await this.putAddressUseCase.execute({id, ...req.body})
 
-            return res.status(201).json(Propina)
+            return res.status(201).json(Address)
 
         } catch (error: any) {
             return res.status(400).json({ message: error.message })
@@ -25,4 +25,4 @@ class PutPropinaController {
     }
 }
 
-export { PutPropinaController }
+export { PutAddressController }

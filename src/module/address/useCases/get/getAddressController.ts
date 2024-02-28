@@ -1,17 +1,17 @@
-import { GetPropinaUseCase } from "./getPropinaUseCase";
+import { GetAddressUseCase } from "./getAddressUseCase";
 import { Request, Response } from "express";
 
-class GetPropinaController {
-    constructor(private getPropinaUseCase: GetPropinaUseCase ) { }
+class GetAddressController {
+    constructor(private getAddressUseCase: GetAddressUseCase ) { }
 
     async handle(req: Request, res: Response ) {
         const { id } = req.params
 
         try {
 
-            const Propina = await this.getPropinaUseCase.execute(Number(id))
+            const Address = await this.getAddressUseCase.execute(Number(id))
             
-            res.status(201).json(Propina)
+            res.status(201).json(Address)
 
         } catch (error: any) {
             return res.status(400).json({message: error.message})
@@ -19,4 +19,4 @@ class GetPropinaController {
     }
 }
 
-export { GetPropinaController }
+export { GetAddressController }
