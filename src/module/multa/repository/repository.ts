@@ -1,32 +1,30 @@
 import { prisma } from "../../../config/prisma";
-import { SecretariorepositoryDto, createSecretarioDto, updateSecretarioDto } from "./interface";
-import { Secretario } from "@prisma/client";
+import { PropinarepositoryDto, createPropinaDto, updatePropinaDto } from "./interface";
+import { Propina } from "@prisma/client";
 
-class SecretarioRepository implements SecretariorepositoryDto {
-    async create(data: createSecretarioDto): Promise<Secretario> {
-        return await prisma.secretario.create({ data })
+class PropinaRepository implements PropinarepositoryDto {
+    async create(data: createPropinaDto): Promise<Propina> {
+        return await prisma.propina.create({ data })
     }
 
-    async get(id: number): Promise<Secretario | Secretario[] | null> {
+
+    async get(id: number): Promise<Propina | Propina[] | null> {
         if (!id) {
-            return await prisma.secretario.findMany()
+            return await prisma.propina.findMany()
         }
-        return await prisma.secretario.findFirst({ where: { id } })
+        return await prisma.propina.findFirst({ where: { id } })
     }
 
-    async findByEmail(email: string) {
-        return await prisma.secretario.findUnique({ where : { email }})
-    }
-    async update({ id, ...data}: updateSecretarioDto): Promise<Boolean > {
-        await prisma.secretario.update({ where: { id  }, data })
+    async update({ id, ...data}: updatePropinaDto): Promise<Boolean > {
+        await prisma.propina.update({ where: { id  }, data })
         return true
 
     }
     async delete(id: number): Promise<Boolean> {
-        await prisma.secretario.delete({ where: { id } })
+        await prisma.propina.delete({ where: { id } })
 
         return true
     }
 }
 
-export { SecretarioRepository }
+export { PropinaRepository }

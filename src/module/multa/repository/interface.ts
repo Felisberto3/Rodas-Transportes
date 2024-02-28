@@ -1,30 +1,22 @@
-import { Secretario } from '@prisma/client'
-interface createSecretarioDto {
-    primeiroNome: string;
-    sobrenome: string;
-    email: string;
-    password: string;
-    mainAdmin: boolean;
-    addressId: number | null;
+import { Propina } from '@prisma/client'
+interface createPropinaDto {
+    descricao: string;
+    valor: number;
 }
 
-interface updateSecretarioDto {
-    id: number
-    primeiroNome?: string;
-    sobrenome?: string;
-    email?: string;
-    password?: string;
-    mainAdmin?: boolean;
-    addressId?: number | null;
+interface updatePropinaDto {
+    id: number;
+    descricao: string;
+    valor: number;
 }
 
 
-interface SecretariorepositoryDto {
-    create(data: createSecretarioDto): Promise<Secretario>
-    get(id: number): Promise<Secretario | Secretario[] | null>
+interface PropinarepositoryDto {
+    create(data: createPropinaDto): Promise<Propina>
+    get(id: number): Promise<Propina | Propina[] | null>
     delete(id: number): Promise<Boolean>
-    update(data: updateSecretarioDto): Promise<Boolean>
+    update(data: updatePropinaDto): Promise<Boolean>
 }
 
 
-export { SecretariorepositoryDto, createSecretarioDto, updateSecretarioDto }
+export { PropinarepositoryDto, createPropinaDto, updatePropinaDto }

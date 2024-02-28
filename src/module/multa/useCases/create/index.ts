@@ -1,9 +1,9 @@
-import { SecretarioRepository } from "../../repository/repository"
-import { CreateSecretarioUseCase } from "./createSecretarioUseCase"
-import { CreateSecretarioController } from "./createSecretarioController"
+import { PropinaRepository } from "../../repository/repository"
+import { CreatePropinaUseCase } from "./createPropinaUseCase"
+import { CreatePropinaController } from "./createPropinaController"
 
-const secretarioRepository = new SecretarioRepository()
-const createSecretarioUseCase = new CreateSecretarioUseCase(secretarioRepository)
-const createSecretario = new CreateSecretarioController(createSecretarioUseCase)
+const propinaRepository = new PropinaRepository()
+const createPropinaUseCase = new CreatePropinaUseCase(propinaRepository)
+const createPropina = new CreatePropinaController(createPropinaUseCase)
 
-export { createSecretario }
+export { createPropina }
