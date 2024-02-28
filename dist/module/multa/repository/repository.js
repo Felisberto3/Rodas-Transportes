@@ -1,27 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SecretarioRepository = void 0;
+exports.MultaRepository = void 0;
 const prisma_1 = require("../../../config/prisma");
-class SecretarioRepository {
+class MultaRepository {
     async create(data) {
-        return await prisma_1.prisma.secretario.create({ data });
+        return await prisma_1.prisma.multa.create({ data });
     }
     async get(id) {
         if (!id) {
-            return await prisma_1.prisma.secretario.findMany();
+            return await prisma_1.prisma.multa.findMany();
         }
-        return await prisma_1.prisma.secretario.findFirst({ where: { id } });
-    }
-    async findByEmail(email) {
-        return await prisma_1.prisma.secretario.findUnique({ where: { email } });
+        return await prisma_1.prisma.multa.findFirst({ where: { id } });
     }
     async update({ id, ...data }) {
-        await prisma_1.prisma.secretario.update({ where: { id }, data });
+        await prisma_1.prisma.multa.update({ where: { id }, data });
         return true;
     }
     async delete(id) {
-        await prisma_1.prisma.secretario.delete({ where: { id } });
+        await prisma_1.prisma.multa.delete({ where: { id } });
         return true;
     }
 }
-exports.SecretarioRepository = SecretarioRepository;
+exports.MultaRepository = MultaRepository;
