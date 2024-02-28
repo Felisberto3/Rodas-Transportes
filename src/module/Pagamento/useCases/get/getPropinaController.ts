@@ -1,17 +1,17 @@
-import { GetPropinaUseCase } from "./getPropinaUseCase";
 import { Request, Response } from "express";
+import { GetPagamentoUseCase } from "./getPropinaUseCase";
 
-class GetPropinaController {
-    constructor(private getPropinaUseCase: GetPropinaUseCase ) { }
+class GetPagamentoController {
+    constructor(private getPagamentoUseCase: GetPagamentoUseCase ) { }
 
     async handle(req: Request, res: Response ) {
-        const { id } = req.params
+        const {numeroDeFactura } = req.params
 
         try {
 
-            const Propina = await this.getPropinaUseCase.execute(Number(id))
+            const Pagamento = await this.getPagamentoUseCase.execute(numeroDeFactura)
             
-            res.status(201).json(Propina)
+            res.status(201).json(Pagamento)
 
         } catch (error: any) {
             return res.status(400).json({message: error.message})
@@ -19,4 +19,4 @@ class GetPropinaController {
     }
 }
 
-export { GetPropinaController }
+export { GetPagamentoController }

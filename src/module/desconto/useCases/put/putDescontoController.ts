@@ -1,5 +1,5 @@
-import { PutDescontoUseCase } from "./putDescontoUseCase";
 import { Request, Response } from "express";
+import { PutDescontoUseCase } from "./putPropinaUseCase";
 
 class PutDescontoController {
     constructor(private putDescontoUseCase: PutDescontoUseCase) { }

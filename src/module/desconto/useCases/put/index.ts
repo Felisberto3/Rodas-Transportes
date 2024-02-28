@@ -1,6 +1,6 @@
 import { DescontoRepository } from "../../repository/repository"
-import { PutDescontoUseCase } from "./putDescontoUseCase"
 import { PutDescontoController } from "./putDescontoController"
+import { PutDescontoUseCase } from "./putPropinaUseCase"
 
 const descontoRepository = new DescontoRepository()
 const putDescontoUseCase = new PutDescontoUseCase(descontoRepository)

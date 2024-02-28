@@ -1,4 +1,4 @@
-import { PagamentoRepository } from "module/Pagamento/repository/repository"
+import { PagamentoRepository } from "../../repository/repository"
 import { CreatePagamentoUseCase } from "./createPropinaUseCase"
 import { CreatePagamentoController } from "./createPropinaController"
 

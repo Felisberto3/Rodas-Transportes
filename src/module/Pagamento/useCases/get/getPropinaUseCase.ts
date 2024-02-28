@@ -1,17 +1,17 @@
+import { PagamentoRepository } from "module/Pagamento/repository/repository";
 import { ServerError } from "../../../../error/index";
-import { PropinaRepository } from "../../repository/repository";
 
-class GetPropinaUseCase {
-    constructor(private PropinaRepository: PropinaRepository) { }
+class GetPagamentoUseCase {
+    constructor(private PagamentoRepository: PagamentoRepository) { }
 
-    async execute(id: number){
+    async execute(numeroDeFactura: string){
 
         try {
-            return await this.PropinaRepository.get(id)
+            return await this.PagamentoRepository.get(numeroDeFactura)
         } catch (error) {
-            throw new ServerError("Falha ao criar a propina", 400);
+            throw new ServerError("Falha ao criar a Pagamento", 400);
         }
     }
 }
 
-export { GetPropinaUseCase }
+export { GetPagamentoUseCase }

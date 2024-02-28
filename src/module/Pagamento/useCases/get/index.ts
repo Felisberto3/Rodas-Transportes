@@ -1,9 +1,10 @@
-import { PropinaRepository } from "../../repository/repository"
-import { GetPropinaUseCase } from "./getPropinaUseCase"
-import { GetPropinaController } from "./getPropinaController"
+import { PagamentoRepository } from "../../repository/repository"
+import { GetPagamentoController } from "./getPropinaController"
+import { GetPagamentoUseCase } from "./getPropinaUseCase"
 
-const propinaRepository = new PropinaRepository()
-const getPropinaUseCase = new GetPropinaUseCase(propinaRepository)
-const getPropina = new GetPropinaController(getPropinaUseCase)
 
-export { getPropina }
+const pagamentoRepository = new PagamentoRepository()
+const getPagamentoUseCase = new GetPagamentoUseCase(pagamentoRepository)
+const getPagamento = new GetPagamentoController(getPagamentoUseCase)
+
+export { getPagamento }
