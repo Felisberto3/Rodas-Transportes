@@ -23,6 +23,10 @@ class PagamentoRepository implements PagamentorepositoryDto {
         await prisma.pagamento.delete({ where: { numeroDeFactura } })
         return true
     }
+
+    async getByYear(year: string) {
+        // return await prisma.pagamento.findMany({ where: )
+    }
 }
 
 export { PagamentoRepository }

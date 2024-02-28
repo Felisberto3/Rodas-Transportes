@@ -21,12 +21,14 @@ model Aluno {
   email          String?
   BI             String       @unique
   turma          String
-  dataNascimento DateTime    
+  dataNascimento DateTime
   address        Address?     @relation(fields: [addressId], references: [id])
   addressId      Int?         @unique
   Calendario     Calendario[]
   Telefone       Telefone[]
   Pagamento      Pagamento[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @default(now())
 }
 
 model Secretario {
@@ -39,6 +41,8 @@ model Secretario {
   addressId    Int?        @unique
   Telefone     Telefone[]
   Pagamento    Pagamento[]
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @default(now())
 }
 
 model Address {
@@ -58,6 +62,8 @@ model Calendario {
   data      DateTime @default(now())
   aluno     Aluno    @relation(fields: [alunoId], references: [id])
   alunoId   Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
 
 model Telefone {
@@ -68,6 +74,8 @@ model Telefone {
   alunoId      Int?
   secretario   Secretario? @relation(fields: [secretarioId], references: [id])
   secretarioId Int?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @default(now())
 }
 
 enum formaDePagamentoEnum {
@@ -90,6 +98,8 @@ model Pagamento {
   multaId          Int?
   desconto         Desconto?            @relation(fields: [descontoId], references: [id])
   descontoId       Int?
+  createdAt        DateTime             @default(now())
+  updatedAt        DateTime             @default(now())
 }
 
 model Propina {
@@ -97,6 +107,8 @@ model Propina {
   descricao String      @unique
   valor     Int
   Pagamento Pagamento[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @default(now())
 }
 
 model Multa {
@@ -104,6 +116,8 @@ model Multa {
   descricao String      @unique
   valor     Int
   Pagamento Pagamento[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @default(now())
 }
 
 model Desconto {
@@ -111,4 +125,6 @@ model Desconto {
   descricao String      @unique
   valor     Int
   Pagamento Pagamento[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @default(now())
 }

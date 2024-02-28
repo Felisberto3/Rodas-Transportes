@@ -1,3 +1,4 @@
+import { geraNumeroDeFactura } from "../../../../config/geraNumeroDeFactura";
 import { ServerError } from "../../../../error/index";
 import { createPagamentoDto } from "../../repository/interface";
 import { PagamentoRepository } from "../../repository/repository";
@@ -8,7 +9,10 @@ class CreatePagamentoUseCase {
     async execute(data: createPagamentoDto){
 
         try {
-            return await this.PagamentoRepository.create(data)
+            const numeroDeFactura = geraNumeroDeFactura()
+
+            return numeroDeFactura
+            // return await this.PagamentoRepository.create(data)
         } catch (error) {
             throw new ServerError("Falha ao criar a Pagamento", 400);
         }

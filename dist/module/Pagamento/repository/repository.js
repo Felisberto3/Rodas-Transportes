@@ -20,5 +20,8 @@ class PagamentoRepository {
         await prisma_1.prisma.pagamento.delete({ where: { numeroDeFactura } });
         return true;
     }
+    async getByYear(year) {
+        // return await prisma.pagamento.findMany({ where: )
+    }
 }
 exports.PagamentoRepository = PagamentoRepository;

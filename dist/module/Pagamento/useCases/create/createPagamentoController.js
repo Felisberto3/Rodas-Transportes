@@ -9,12 +9,8 @@ class CreatePagamentoController {
         const data = req.body;
         try {
             // await createPagamentoSchema.validate(data)
-            const firstNumber = new Date().getUTCMilliseconds();
-            const secondNumber = new Date().getUTCMilliseconds();
-            const year = new Date().getFullYear();
-            const numeroDeFactura = `${firstNumber}.${secondNumber}/${year}`;
-            // const Pagamento = await this.createPagamentoUseCase.execute(data)
-            res.status(201).json(numeroDeFactura);
+            const Pagamento = await this.createPagamentoUseCase.execute(data);
+            res.status(201).json(Pagamento);
         }
         catch (error) {
             return res.status(400).json({ message: error.message });
