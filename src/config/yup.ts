@@ -1,7 +1,6 @@
 import * as yup from 'yup'
 const createsecretarioSchema = yup.object({
-    primeiroNome: yup.string().required(),
-    sobrenome: yup.string().required(),
+    nomeCompleto: yup.string().required(),
     email: yup.string().email().required(),
     password: yup.string().required(),
     mainAdmin: yup.boolean().required(),
@@ -29,7 +28,6 @@ const createAlunoSchema = yup.object({
     classe: yup.string().required(),
     turma: yup.string().required(),
     dataNascimento: yup.string().required(),
-    adress_id: yup.string().required(),
     addressId: yup.number()
 })
 

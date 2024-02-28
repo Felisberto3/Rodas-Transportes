@@ -1,26 +1,23 @@
 import { Aluno } from '@prisma/client'
 interface createAlunoDto {
     nomeCompleto: string;
-    email: string | null;
-    BI: string;
     processo: string;
     classe: string;
+    BI: string;
     turma: string;
-    dataNascimento: string;
-    adress_id: string;
-    addressId: number | null
+    dataNascimento: Date;
+    addressId: number | null;
 }
 
 interface updateAlunoDto {
     id: number;
-    nomeCompleto?: string;
-    email?: string | null;
-    processo?: string;
-    classe?: string;
-    turma?: string;
-    dataNascimento?: string;
-    adress_id?: string;
-    addressId?: number | null
+    nomeCompleto: string;
+    processo: string;
+    classe: string;
+    BI: string;
+    turma: string;
+    dataNascimento: Date;
+    addressId: number | null;
 }
 
 

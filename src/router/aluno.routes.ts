@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { createAluno } from "module/aluno/useCases/create";
+import { createAluno } from "../module/aluno/useCases/create/index";
 
 const alunoRouter = Router()
 

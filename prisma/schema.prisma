@@ -15,45 +15,30 @@ datasource db {
 
 model Aluno {
   id             Int          @id @default(autoincrement())
-  processo       String       @unique
-  BI             String       @unique
   nomeCompleto   String
-  email          String?      @unique
+  processo       String       @unique
   classe         String
+  email          String?
+  BI             String       @unique
   turma          String
-  dataNascimento String
-  adress_id      String
-  Calendario     Calendario[]
+  dataNascimento DateTime    
   address        Address?     @relation(fields: [addressId], references: [id])
   addressId      Int?         @unique
+  Calendario     Calendario[]
   Telefone       Telefone[]
   Pagamento      Pagamento[]
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @default(now())
-}
-
-model Calendario {
-  id        Int      @id @default(autoincrement())
-  mes       String
-  aluno     Aluno    @relation(fields: [alunoId], references: [id])
-  alunoId   Int
-  ano       Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
 }
 
 model Secretario {
-  id           Int        @id @default(autoincrement())
-  primeiroNome String
-  sobrenome    String
-  email        String     @unique
+  id           Int         @id @default(autoincrement())
+  nomeCompleto String
+  email        String      @unique
   password     String
-  mainAdmin    Boolean    @default(false)
-  address      Address?   @relation(fields: [addressId], references: [id])
-  addressId    Int?       @unique
+  mainAdmin    Boolean
+  address      Address?    @relation(fields: [addressId], references: [id])
+  addressId    Int?        @unique
   Telefone     Telefone[]
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @default(now())
+  Pagamento    Pagamento[]
 }
 
 model Address {
@@ -62,65 +47,68 @@ model Address {
   municipio  String
   bairro     String
   rua        String
-  secretario Secretario?
-  aluno      Aluno?
+  Aluno      Aluno?
+  Secretario Secretario?
+}
+
+model Calendario {
+  id        Int      @id @default(autoincrement())
+  mes       String
+  municipio String
+  data      DateTime @default(now())
+  aluno     Aluno    @relation(fields: [alunoId], references: [id])
+  alunoId   Int
 }
 
 model Telefone {
   id           Int         @id @default(autoincrement())
   numero       String
+  municipio    String
   aluno        Aluno?      @relation(fields: [alunoId], references: [id])
   alunoId      Int?
   secretario   Secretario? @relation(fields: [secretarioId], references: [id])
   secretarioId Int?
 }
 
-model ContasBancarias {
-  id            Int    @id @default(autoincrement())
-  numeroDaConta String
-  nomeDaConta   String
-}
-
-enum TipoDePagamentoEnum {
+enum formaDePagamentoEnum {
   multicaixa
   deposito
 }
 
 model Pagamento {
-  Numerofactura   String              @id
-  TipoDePagamento TipoDePagamentoEnum
-  multa           Multa               @relation(fields: [multaId], references: [id])
-  multaId         Int
-  propina         Propina             @relation(fields: [propinaId], references: [id])
-  propinaId       Int
-  meses           String
-  totalRecebido   Decimal
-  descontos       Descontos           @relation(fields: [descontosId], references: [id])
-  descontosId     Int
-  quantidade      Int
-  aluno           Aluno               @relation(fields: [alunoId], references: [id])
-  alunoId         Int
-  createdAt       DateTime            @default(now())
-  updatedAt       DateTime            @default(now())
-}
-
-model Descontos {
-  id        Int         @id @default(autoincrement())
-  descricao String      @unique
-  valor     Decimal     @default(0.0)
-  Pagamento Pagamento[]
+  numeroDeFactura  String               @id @unique
+  formaDePagamento formaDePagamentoEnum
+  quantidade       Int                  @default(1)
+  mes              String
+  aluno            Aluno?               @relation(fields: [alunoId], references: [id])
+  alunoId          Int?
+  secretario       Secretario?          @relation(fields: [secretarioId], references: [id])
+  secretarioId     Int?
+  propina          Propina?             @relation(fields: [propinaId], references: [id])
+  propinaId        Int?
+  multa            Multa?               @relation(fields: [multaId], references: [id])
+  multaId          Int?
+  desconto         Desconto?            @relation(fields: [descontoId], references: [id])
+  descontoId       Int?
 }
 
 model Propina {
   id        Int         @id @default(autoincrement())
   descricao String      @unique
-  valor     Decimal
+  valor     Int
   Pagamento Pagamento[]
 }
 
 model Multa {
   id        Int         @id @default(autoincrement())
   descricao String      @unique
-  valor     Decimal     @default(0.0)
+  valor     Int
+  Pagamento Pagamento[]
+}
+
+model Desconto {
+  id        Int         @id @default(autoincrement())
+  descricao String      @unique
+  valor     Int
   Pagamento Pagamento[]
 }

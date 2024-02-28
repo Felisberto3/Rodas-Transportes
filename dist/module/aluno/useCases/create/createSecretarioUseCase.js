@@ -6,12 +6,14 @@ class CreateAlunoUseCase {
     constructor(alunoRepository) {
         this.alunoRepository = alunoRepository;
     }
-    async execute({ BI, ...data }) {
+    async execute({ BI, dataNascimento, ...data }) {
         const userExist = await this.alunoRepository.findByBInumber(BI);
         if (userExist) {
             throw new index_1.ServerError('Aluno já existe', 400);
         }
-        return await this.alunoRepository.create({ BI, ...data });
+        dataNascimento = new Date(dataNascimento);
+        // dataNascimento = data1.toString()
+        return await this.alunoRepository.create({ BI, dataNascimento, ...data });
     }
 }
 exports.CreateAlunoUseCase = CreateAlunoUseCase;

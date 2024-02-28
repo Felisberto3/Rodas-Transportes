@@ -1,7 +1,6 @@
 import { Secretario } from '@prisma/client'
 interface createSecretarioDto {
-    primeiroNome: string;
-    sobrenome: string;
+    nomeCompleto: string;
     email: string;
     password: string;
     mainAdmin: boolean;
@@ -9,13 +8,12 @@ interface createSecretarioDto {
 }
 
 interface updateSecretarioDto {
-    id: number
-    primeiroNome?: string;
-    sobrenome?: string;
-    email?: string;
-    password?: string;
-    mainAdmin?: boolean;
-    addressId?: number | null;
+    id: number;
+    nomeCompleto: string;
+    email: string;
+    password: string;
+    mainAdmin: boolean;
+    addressId: number | null;
 }
 
 

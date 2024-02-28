@@ -1,6 +1,6 @@
-import { CreateAlunoUseCase } from "./createAlunoUseCase";
 import { Request, Response } from "express";
 import { createAlunoSchema } from "../../../../config/yup";
+import { CreateAlunoUseCase } from "./createSecretarioUseCase";
 
 class CreateAlunoController {
     constructor(private createAlunoUseCase: CreateAlunoUseCase ) { }
