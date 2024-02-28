@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createAluno = void 0;
+const repository_1 = require("../../repository/repository");
+const createSecretarioController_1 = require("./createSecretarioController");
+const createSecretarioUseCase_1 = require("./createSecretarioUseCase");
+const alunoRepository = new repository_1.AlunoRepository();
+const createAlunoUseCase = new createSecretarioUseCase_1.CreateAlunoUseCase(alunoRepository);
+const createAluno = new createSecretarioController_1.CreateAlunoController(createAlunoUseCase);
+exports.createAluno = createAluno;

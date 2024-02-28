@@ -1,10 +1,8 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createSecretario = void 0;
-const repository_1 = require("../../repository/repository");
-const createSecretarioUseCase_1 = require("./createSecretarioUseCase");
-const createSecretarioController_1 = require("./createSecretarioController");
-const secretarioRepository = new repository_1.SecretarioRepository();
-const createSecretarioUseCase = new createSecretarioUseCase_1.CreateSecretarioUseCase(secretarioRepository);
-const createSecretario = new createSecretarioController_1.CreateSecretarioController(createSecretarioUseCase);
-exports.createSecretario = createSecretario;
+// import { CalendarioRepository } from "../../repository/repository"
+// import { CreateCalendarioController } from "./createSecretarioController"
+// import { CreateCalendarioUseCase } from "./createSecretarioUseCase"
+// const calendarioRepository = new CalendarioRepository()
+// const createCalendarioUseCase = new CreateCalendarioUseCase(calendarioRepository)
+// const createCalendario = new CreateCalendarioController(createCalendarioUseCase)
+// export { createCalendario }

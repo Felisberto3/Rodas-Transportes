@@ -1,3 +1,4 @@
+import { CalendarioRepository } from "../../../calendario/repository/repository";
 import { geraNumeroDeFactura } from "../../../../config/geraNumeroDeFactura";
 import { ServerError } from "../../../../error/index";
 import { createPagamentoDto } from "../../repository/interface";
@@ -5,7 +6,9 @@ import { PagamentoRepository } from "../../repository/repository";
 
 class CreatePagamentoUseCase {
     constructor(
-        private pagamentoRepository: PagamentoRepository) { }
+        private pagamentoRepository: PagamentoRepository,
+        private calendarioRepository: CalendarioRepository
+        ) { }
 
     async execute({mes, ...data}: createPagamentoDto) {
 
@@ -19,7 +22,11 @@ class CreatePagamentoUseCase {
             if (!pagamenntos.length) {
                 const numeroDeFactura = 1 + '.' + geraNumeroDeFactura()
 
-                return await this.pagamentoRepository.create({ numeroDeFactura,mes, ...data })
+                const novaFactura =  await this.pagamentoRepository.create({ numeroDeFactura,mes, ...data })
+
+                await this.calendarioRepository.create({ data: novaFactura.createdAt, alunoId: data.alunoId })
+
+                return novaFactura
             }
             const ultimoPagamento = pagamenntos[pagamenntos.length - 1]
 
@@ -30,6 +37,10 @@ class CreatePagamentoUseCase {
             const numeroDeFactura = novoId + '.' + geraNumeroDeFactura()
 
             const novaFactura =  await this.pagamentoRepository.create({ numeroDeFactura,mes, ...data })
+
+            await this.calendarioRepository.create({ data: novaFactura.createdAt, alunoId: data.alunoId })
+
+            return novaFactura
 
         } catch (error: any) {
             throw new ServerError(error.message, 400);

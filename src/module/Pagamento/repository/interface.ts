@@ -4,7 +4,7 @@ interface createPagamentoDto {
     formaDePagamento: "multicaixa" | "deposito";
     currentYear: number;
     mes: string;
-    alunoId: number | null;
+    alunoId: number;
     secretarioId: number | null;
     propinaId: number
     multaId: number

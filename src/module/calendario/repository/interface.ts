@@ -1,28 +1,22 @@
-import { Secretario } from '@prisma/client'
-interface createSecretarioDto {
-    nomeCompleto: string;
-    email: string;
-    password: string;
-    mainAdmin: boolean;
-    addressId: number | null;
+import { Calendario } from '@prisma/client'
+interface createCalendarioDto {
+    data: Date;
+    alunoId: number;
 }
 
-interface updateSecretarioDto {
+interface updateCalendarioDto {
     id: number;
-    nomeCompleto: string;
-    email: string;
-    password: string;
-    mainAdmin: boolean;
-    addressId: number | null;
+    data: Date;
+    alunoId: number;
 }
 
 
-interface SecretariorepositoryDto {
-    create(data: createSecretarioDto): Promise<Secretario>
-    get(id: number): Promise<Secretario | Secretario[] | null>
+interface CalendariorepositoryDto {
+    create(data: createCalendarioDto): Promise<Calendario>
+    get(id: number): Promise<Calendario | Calendario[] | null>
     delete(id: number): Promise<Boolean>
-    update(data: updateSecretarioDto): Promise<Boolean>
+    update(data: updateCalendarioDto): Promise<Boolean>
 }
 
 
-export { SecretariorepositoryDto, createSecretarioDto, updateSecretarioDto }
+export { CalendariorepositoryDto, createCalendarioDto, updateCalendarioDto }

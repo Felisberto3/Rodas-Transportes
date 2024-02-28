@@ -1,32 +1,29 @@
 import { prisma } from "../../../config/prisma";
-import { SecretariorepositoryDto, createSecretarioDto, updateSecretarioDto } from "./interface";
-import { Secretario } from "@prisma/client";
+import { CalendariorepositoryDto, createCalendarioDto, updateCalendarioDto } from "./interface";
+import { Calendario } from "@prisma/client";
 
-class SecretarioRepository implements SecretariorepositoryDto {
-    async create(data: createSecretarioDto): Promise<Secretario> {
-        return await prisma.secretario.create({ data })
+class CalendarioRepository implements CalendariorepositoryDto {
+    async create(data: createCalendarioDto): Promise<Calendario> {
+        return await prisma.calendario.create({ data })
     }
 
-    async get(id: number): Promise<Secretario | Secretario[] | null> {
+    async get(id: number): Promise<Calendario | Calendario[] | null> {
         if (!id) {
-            return await prisma.secretario.findMany()
+            return await prisma.calendario.findMany()
         }
-        return await prisma.secretario.findFirst({ where: { id } })
+        return await prisma.calendario.findFirst({ where: { id } })
     }
 
-    async findByEmail(email: string) {
-        return await prisma.secretario.findUnique({ where : { email }})
-    }
-    async update({ id, ...data}: updateSecretarioDto): Promise<Boolean > {
-        await prisma.secretario.update({ where: { id  }, data })
+    async update({ id, ...data}: updateCalendarioDto): Promise<Boolean > {
+        await prisma.calendario.update({ where: { id  }, data })
         return true
 
     }
     async delete(id: number): Promise<Boolean> {
-        await prisma.secretario.delete({ where: { id } })
+        await prisma.calendario.delete({ where: { id } })
 
         return true
     }
 }
 
-export { SecretarioRepository }
+export { CalendarioRepository }

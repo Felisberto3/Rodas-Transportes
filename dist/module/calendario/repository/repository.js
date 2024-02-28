@@ -1,27 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SecretarioRepository = void 0;
+exports.CalendarioRepository = void 0;
 const prisma_1 = require("../../../config/prisma");
-class SecretarioRepository {
+class CalendarioRepository {
     async create(data) {
-        return await prisma_1.prisma.secretario.create({ data });
+        return await prisma_1.prisma.calendario.create({ data });
     }
     async get(id) {
         if (!id) {
-            return await prisma_1.prisma.secretario.findMany();
+            return await prisma_1.prisma.calendario.findMany();
         }
-        return await prisma_1.prisma.secretario.findFirst({ where: { id } });
-    }
-    async findByEmail(email) {
-        return await prisma_1.prisma.secretario.findUnique({ where: { email } });
+        return await prisma_1.prisma.calendario.findFirst({ where: { id } });
     }
     async update({ id, ...data }) {
-        await prisma_1.prisma.secretario.update({ where: { id }, data });
+        await prisma_1.prisma.calendario.update({ where: { id }, data });
         return true;
     }
     async delete(id) {
-        await prisma_1.prisma.secretario.delete({ where: { id } });
+        await prisma_1.prisma.calendario.delete({ where: { id } });
         return true;
     }
 }
-exports.SecretarioRepository = SecretarioRepository;
+exports.CalendarioRepository = CalendarioRepository;

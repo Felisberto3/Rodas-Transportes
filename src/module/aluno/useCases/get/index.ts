@@ -1,6 +1,6 @@
 import { AlunoRepository } from "../../repository/repository"
-import { CreateAlunoController } from "./createAlunoController"
-import { CreateAlunoUseCase } from "./createAlunoUseCase"
+import { CreateAlunoController } from "./getAlunoController"
+import { CreateAlunoUseCase } from "./getAlunoUseCase"
 
 
 const alunoRepository = new AlunoRepository()
