@@ -1,18 +1,18 @@
 import { ServerError } from "../../../../error/index";
-import { createPropinaDto } from "../../repository/interface";
-import { PropinaRepository } from "../../repository/repository";
+import { createDescontoDto } from "../../repository/interface";
+import { DescontoRepository } from "../../repository/repository";
 
-class CreatePropinaUseCase {
-    constructor(private PropinaRepository: PropinaRepository) { }
+class CreateDescontoUseCase {
+    constructor(private descontoRepository: DescontoRepository) { }
 
-    async execute(data: createPropinaDto){
+    async execute(data: createDescontoDto){
 
         try {
-            return await this.PropinaRepository.create(data)
+            return await this.descontoRepository.create(data)
         } catch (error) {
-            throw new ServerError("Falha ao criar a propina", 400);
+            throw new ServerError("Falha ao criar a Desconto", 400);
         }
     }
 }
 
-export { CreatePropinaUseCase }
+export { CreateDescontoUseCase }

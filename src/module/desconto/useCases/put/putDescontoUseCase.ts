@@ -1,18 +1,18 @@
-import { updatePropinaDto } from "../../repository/interface";
+import { updateDescontoDto } from "../../repository/interface";
 import { ServerError } from "../../../../error/index";
-import { PropinaRepository } from "../../repository/repository";
+import { DescontoRepository } from "../../repository/repository";
 
-class PutPropinaUseCase {
-    constructor(private propinaRepository: PropinaRepository) { }
+class PutDescontoUseCase {
+    constructor(private descontoRepository: DescontoRepository) { }
 
-    async execute(data: updatePropinaDto){
+    async execute(data: updateDescontoDto){
 
         try {
-            return await this.propinaRepository.update(data)
+            return await this.descontoRepository.update(data)
         } catch (error) {
-            throw new ServerError("Falha ao criar a propina", 400);
+            throw new ServerError("Falha ao criar a Desconto", 400);
         }
     }
 }
 
-export { PutPropinaUseCase }
+export { PutDescontoUseCase }

@@ -1,9 +1,9 @@
-import { PropinaRepository } from "../../repository/repository"
-import { CreatePropinaUseCase } from "./createPropinaUseCase"
-import { CreatePropinaController } from "./createPropinaController"
+import { DescontoRepository } from "../../repository/repository"
+import { CreateDescontoUseCase } from "./createDescontoUseCase"
+import { CreateDescontoController } from "./createDescontoController"
 
-const propinaRepository = new PropinaRepository()
-const createPropinaUseCase = new CreatePropinaUseCase(propinaRepository)
-const createPropina = new CreatePropinaController(createPropinaUseCase)
+const descontoRepository = new DescontoRepository()
+const createDescontoUseCase = new CreateDescontoUseCase(descontoRepository)
+const createDesconto = new CreateDescontoController(createDescontoUseCase)
 
-export { createPropina }
+export { createDesconto }

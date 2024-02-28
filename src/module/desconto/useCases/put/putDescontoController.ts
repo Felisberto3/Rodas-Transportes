@@ -1,23 +1,23 @@
-import { PutPropinaUseCase } from "./putPropinaUseCase";
+import { PutDescontoUseCase } from "./putDescontoUseCase";
 import { Request, Response } from "express";
 
-class PutPropinaController {
-    constructor(private putPropinaUseCase: PutPropinaUseCase) { }
+class PutDescontoController {
+    constructor(private putDescontoUseCase: PutDescontoUseCase) { }
 
     async handle(req: Request, res: Response) {
         const { id } = req.params
-        const { mainAdmin, ...data } = req.body
+        const { mainAdmin,userId, ...data } = req.body
 
 
         try {
 
             if (!mainAdmin) {
-                return res.status(400).json({ message:"Apenas a administradora pode actualizar as propinas"})
+                return res.status(400).json({ message:"Apenas a administradora pode actualizar as Descontos"})
             }
 
-            const Propina = await this.putPropinaUseCase.execute({id, ...req.body})
+            const Desconto = await this.putDescontoUseCase.execute({id, ...data})
 
-            return res.status(201).json(Propina)
+            return res.status(201).json(Desconto)
 
         } catch (error: any) {
             return res.status(400).json({ message: error.message })
@@ -25,4 +25,4 @@ class PutPropinaController {
     }
 }
 
-export { PutPropinaController }
+export { PutDescontoController }

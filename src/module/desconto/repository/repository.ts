@@ -1,30 +1,30 @@
 import { prisma } from "../../../config/prisma";
-import { PropinarepositoryDto, createPropinaDto, updatePropinaDto } from "./interface";
-import { Propina } from "@prisma/client";
+import { DescontorepositoryDto, createDescontoDto, updateDescontoDto } from "./interface";
+import { Desconto } from "@prisma/client";
 
-class PropinaRepository implements PropinarepositoryDto {
-    async create(data: createPropinaDto): Promise<Propina> {
-        return await prisma.propina.create({ data })
+class DescontoRepository implements DescontorepositoryDto {
+    async create(data: createDescontoDto): Promise<Desconto> {
+        return await prisma.desconto.create({ data })
     }
 
 
-    async get(id: number): Promise<Propina | Propina[] | null> {
+    async get(id: number): Promise<Desconto | Desconto[] | null> {
         if (!id) {
-            return await prisma.propina.findMany()
+            return await prisma.desconto.findMany()
         }
-        return await prisma.propina.findFirst({ where: { id } })
+        return await prisma.desconto.findFirst({ where: { id } })
     }
 
-    async update({ id, userId,...data}: updatePropinaDto): Promise<Boolean > {
-        await prisma.propina.update({ where: { id  }, data })
+    async update({ id,...data}: updateDescontoDto): Promise<Boolean > {
+        await prisma.desconto.update({ where: { id  }, data })
         return true
 
     }
     async delete(id: number): Promise<Boolean> {
-        await prisma.propina.delete({ where: { id } })
+        await prisma.desconto.delete({ where: { id } })
 
         return true
     }
 }
 
-export { PropinaRepository }
+export { DescontoRepository }

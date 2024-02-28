@@ -1,9 +1,9 @@
-import { PropinaRepository } from "../../repository/repository"
-import { GetPropinaUseCase } from "./getPropinaUseCase"
-import { GetPropinaController } from "./getPropinaController"
+import { DescontoRepository } from "../../repository/repository"
+import { GetDescontoUseCase } from "./getDescontoUseCase"
+import { GetDescontoController } from "./getDescontoController"
 
-const propinaRepository = new PropinaRepository()
-const getPropinaUseCase = new GetPropinaUseCase(propinaRepository)
-const getPropina = new GetPropinaController(getPropinaUseCase)
+const descontoRepository = new DescontoRepository()
+const getDescontoUseCase = new GetDescontoUseCase(descontoRepository)
+const getDesconto = new GetDescontoController(getDescontoUseCase)
 
-export { getPropina }
+export { getDesconto }

@@ -1,9 +1,9 @@
-import { CreatePropinaUseCase } from "./createPropinaUseCase";
+import { CreateDescontoUseCase } from "./createDescontoUseCase";
 import { Request, Response } from "express";
 import { createPropinaSchema } from "../../../../config/yup";
 
-class CreatePropinaController {
-    constructor(private createPropinaUseCase: CreatePropinaUseCase ) { }
+class CreateDescontoController {
+    constructor(private createDescontoUseCase: CreateDescontoUseCase ) { }
 
     async handle(req: Request, res: Response ) {
         const data = req.body
@@ -11,14 +11,14 @@ class CreatePropinaController {
         try {
             await createPropinaSchema.validate(data)
 
-            const Propina = await this.createPropinaUseCase.execute(data)
+            const Desconto = await this.createDescontoUseCase.execute(data)
     
             
-            res.status(201).json(Propina)
+            res.status(201).json(Desconto)
         } catch (error: any) {
             return res.status(400).json({message: error.message})
         }
     }
 }
 
-export { CreatePropinaController }
+export { CreateDescontoController }
