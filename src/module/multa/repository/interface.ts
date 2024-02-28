@@ -1,22 +1,22 @@
-import { Propina } from '@prisma/client'
-interface createPropinaDto {
+import { Multa } from '@prisma/client'
+interface createMultaDto {
     descricao: string;
     valor: number;
 }
 
-interface updatePropinaDto {
+interface updateMultaDto {
     id: number;
     descricao: string;
     valor: number;
 }
 
 
-interface PropinarepositoryDto {
-    create(data: createPropinaDto): Promise<Propina>
-    get(id: number): Promise<Propina | Propina[] | null>
+interface MultarepositoryDto {
+    create(data: createMultaDto): Promise<Multa>
+    get(id: number): Promise<Multa | Multa[] | null>
     delete(id: number): Promise<Boolean>
-    update(data: updatePropinaDto): Promise<Boolean>
+    update(data: updateMultaDto): Promise<Boolean>
 }
 
 
-export { PropinarepositoryDto, createPropinaDto, updatePropinaDto }
+export { MultarepositoryDto, createMultaDto, updateMultaDto }

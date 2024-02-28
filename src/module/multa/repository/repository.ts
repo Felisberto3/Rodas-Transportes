@@ -1,30 +1,30 @@
 import { prisma } from "../../../config/prisma";
-import { PropinarepositoryDto, createPropinaDto, updatePropinaDto } from "./interface";
-import { Propina } from "@prisma/client";
+import { MultarepositoryDto, createMultaDto, updateMultaDto } from "./interface";
+import { Multa } from "@prisma/client";
 
-class PropinaRepository implements PropinarepositoryDto {
-    async create(data: createPropinaDto): Promise<Propina> {
-        return await prisma.propina.create({ data })
+class MultaRepository implements MultarepositoryDto {
+    async create(data: createMultaDto): Promise<Multa> {
+        return await prisma.multa.create({ data })
     }
 
 
-    async get(id: number): Promise<Propina | Propina[] | null> {
+    async get(id: number): Promise<Multa | Multa[] | null> {
         if (!id) {
-            return await prisma.propina.findMany()
+            return await prisma.multa.findMany()
         }
-        return await prisma.propina.findFirst({ where: { id } })
+        return await prisma.multa.findFirst({ where: { id } })
     }
 
-    async update({ id, ...data}: updatePropinaDto): Promise<Boolean > {
-        await prisma.propina.update({ where: { id  }, data })
+    async update({ id, ...data}: updateMultaDto): Promise<Boolean > {
+        await prisma.multa.update({ where: { id  }, data })
         return true
 
     }
     async delete(id: number): Promise<Boolean> {
-        await prisma.propina.delete({ where: { id } })
+        await prisma.multa.delete({ where: { id } })
 
         return true
     }
 }
 
-export { PropinaRepository }
+export { MultaRepository }

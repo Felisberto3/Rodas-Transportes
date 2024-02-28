@@ -1,18 +1,18 @@
 import { ServerError } from "../../../../error/index";
-import { createPropinaDto } from "../../repository/interface";
-import { PropinaRepository } from "../../repository/repository";
+import { createMultaDto } from "../../repository/interface";
+import { MultaRepository } from "../../repository/repository";
 
-class CreatePropinaUseCase {
-    constructor(private PropinaRepository: PropinaRepository) { }
+class CreateMultaUseCase {
+    constructor(private  multaRepository: MultaRepository) { }
 
-    async execute(data: createPropinaDto){
+    async execute(data: createMultaDto){
 
         try {
-            return await this.PropinaRepository.create(data)
+            return await this.multaRepository.create(data)
         } catch (error) {
-            throw new ServerError("Falha ao criar a propina", 400);
+            throw new ServerError("Falha ao criar a Multa", 400);
         }
     }
 }
 
-export { CreatePropinaUseCase }
+export { CreateMultaUseCase }

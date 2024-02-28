@@ -1,9 +1,9 @@
-import { CreatePropinaUseCase } from "./createPropinaUseCase";
+import { CreateMultaUseCase } from "./createMultaUseCase";
 import { Request, Response } from "express";
 import { createPropinaSchema } from "../../../../config/yup";
 
-class CreatePropinaController {
-    constructor(private createPropinaUseCase: CreatePropinaUseCase ) { }
+class CreateMultaController {
+    constructor(private createMultaUseCase: CreateMultaUseCase ) { }
 
     async handle(req: Request, res: Response ) {
         const data = req.body
@@ -11,14 +11,14 @@ class CreatePropinaController {
         try {
             await createPropinaSchema.validate(data)
 
-            const Propina = await this.createPropinaUseCase.execute(data)
+            const Multa = await this.createMultaUseCase.execute(data)
     
             
-            res.status(201).json(Propina)
+            res.status(201).json(Multa)
         } catch (error: any) {
             return res.status(400).json({message: error.message})
         }
     }
 }
 
-export { CreatePropinaController }
+export { CreateMultaController }
