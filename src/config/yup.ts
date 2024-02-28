@@ -13,4 +13,12 @@ const createPropinaSchema = yup.object({
     descricao:yup.string().required(),  
 })
 
-export { createsecretarioSchema, createPropinaSchema }
+
+const createAddressSchema = yup.object({
+    provincia: yup.string().required(),
+    municipio: yup.string().required(),
+    bairro: yup.string().required(),
+    rua: yup.string().required()
+})
+
+export { createsecretarioSchema, createPropinaSchema ,createAddressSchema }
