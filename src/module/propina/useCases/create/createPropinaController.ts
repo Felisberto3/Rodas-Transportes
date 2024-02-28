@@ -1,6 +1,5 @@
 import { CreatePropinaUseCase } from "./createPropinaUseCase";
 import { Request, Response } from "express";
-import { payLoadGenerator } from "../../../../config/payLoad";
 import { createPropinaSchema } from "../../../../config/yup";
 
 class CreatePropinaController {
