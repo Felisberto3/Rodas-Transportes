@@ -11,10 +11,18 @@ class CreatePagamentoController {
         try {
             // await createPagamentoSchema.validate(data)
 
-            const Pagamento = await this.createPagamentoUseCase.execute(data)
+            const firstNumber =  new Date().getUTCMilliseconds()
+            const secondNumber =  new Date().getUTCMilliseconds()
+            const year =  new Date().getFullYear()
+
+            const numeroDeFactura = `${firstNumber}.${secondNumber}/${year}`;
+            
+            
+
+            // const Pagamento = await this.createPagamentoUseCase.execute(data)
     
             
-            res.status(201).json(Pagamento)
+            res.status(201).json(numeroDeFactura)
         } catch (error: any) {
             return res.status(400).json({message: error.message})
         }
