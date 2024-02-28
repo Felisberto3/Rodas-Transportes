@@ -1,17 +1,17 @@
 import { ServerError } from "../../../../error/index";
-import { PropinaRepository } from "../../repository/repository";
+import { DescontoRepository } from "../../repository/repository";
 
-class GetPropinaUseCase {
-    constructor(private PropinaRepository: PropinaRepository) { }
+class GetDescontoUseCase {
+    constructor(private DescontoRepository: DescontoRepository) { }
 
     async execute(id: number){
 
         try {
-            return await this.PropinaRepository.get(id)
+            return await this.DescontoRepository.get(id)
         } catch (error) {
-            throw new ServerError("Falha ao criar a propina", 400);
+            throw new ServerError("Falha ao criar a Desconto", 400);
         }
     }
 }
 
-export { GetPropinaUseCase }
+export { GetDescontoUseCase }
