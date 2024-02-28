@@ -12,7 +12,6 @@ class CreateAlunoUseCase {
             throw new index_1.ServerError('Aluno já existe', 400);
         }
         dataNascimento = new Date(dataNascimento);
-        // dataNascimento = data1.toString()
         return await this.alunoRepository.create({ BI, dataNascimento, ...data });
     }
 }
