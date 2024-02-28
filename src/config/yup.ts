@@ -31,6 +31,19 @@ const createAlunoSchema = yup.object({
     addressId: yup.number()
 })
 
+const createPagamentoSchema = yup.object({
+    numeroDeFactura: yup.string().required(),
+    formaDePagamento: yup.string().required(),
+    quantidade: yup.number().required(),
+    mes: yup.string().required(),
+    alunoId: yup.number().required(),
+    secretarioId: yup.number().required(),
+    propinaId: yup.number().required(),
+    multaId: yup.number().required(),
+    descontoId: yup.number().required()
+})
 
 
-export { createsecretarioSchema, createPropinaSchema, createAddressSchema, createAlunoSchema }
+
+
+export { createsecretarioSchema, createPropinaSchema, createAddressSchema, createAlunoSchema, createPagamentoSchema }
