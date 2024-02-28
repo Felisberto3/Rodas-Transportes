@@ -1,4 +1,4 @@
-import { PagamentoRepository } from "module/Pagamento/repository/repository"
+import { PagamentoRepository } from "../../repository/repository"
 import { PutPagamentoUseCase } from "./putPagamentoUseCase"
 import { PutPagamentoController } from "./putPagamentoController"
 
