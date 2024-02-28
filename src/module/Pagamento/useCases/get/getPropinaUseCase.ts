@@ -5,7 +5,8 @@ class GetPagamentoUseCase {
     constructor(private PagamentoRepository: PagamentoRepository) { }
 
     async execute(numeroDeFactura: string){
-
+        console.log(numeroDeFactura);
+        
         try {
             return await this.PagamentoRepository.get(numeroDeFactura)
         } catch (error) {

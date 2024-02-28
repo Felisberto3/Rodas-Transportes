@@ -7,6 +7,7 @@ class GetPagamentoUseCase {
         this.PagamentoRepository = PagamentoRepository;
     }
     async execute(numeroDeFactura) {
+        console.log(numeroDeFactura);
         try {
             return await this.PagamentoRepository.get(numeroDeFactura);
         }
