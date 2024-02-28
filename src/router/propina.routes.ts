@@ -8,7 +8,7 @@ propinaRouter.post('/create', async (req:Request, res:Response) => {
     return await createPropina.handle(req,res)
 })
 
-propinaRouter.post('/get', async (req:Request, res:Response) => {
+propinaRouter.get('/get/:id', async (req:Request, res:Response) => {
     return await getPropina.handle(req,res)
 })
 

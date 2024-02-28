@@ -9,6 +9,6 @@ exports.propinaRouter = propinaRouter;
 propinaRouter.post('/create', async (req, res) => {
     return await index_1.createPropina.handle(req, res);
 });
-propinaRouter.post('/get', async (req, res) => {
+propinaRouter.get('/get/:id', async (req, res) => {
     return await index_2.getPropina.handle(req, res);
 });
