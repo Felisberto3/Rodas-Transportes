@@ -2,6 +2,7 @@ import { Aluno } from '@prisma/client'
 interface createAlunoDto {
     nomeCompleto: string;
     email: string | null;
+    BI: string;
     processo: string;
     classe: string;
     turma: string;

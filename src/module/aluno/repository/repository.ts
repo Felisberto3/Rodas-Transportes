@@ -14,8 +14,8 @@ class AlunoRepository implements AlunorepositoryDto {
         return await prisma.aluno.findFirst({ where: { id } })
     }
 
-    async findByEmail(email: string) {
-        return await prisma.aluno.findUnique({ where : { email }})
+    async findByBInumber(BI: string) {
+        return await prisma.aluno.findUnique({ where : { BI }})
     }
     async update({ id, ...data}: updateAlunoDto): Promise<Boolean > {
         await prisma.aluno.update({ where: { id  }, data })

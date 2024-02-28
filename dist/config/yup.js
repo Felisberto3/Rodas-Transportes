@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createAddressSchema = exports.createPropinaSchema = exports.createsecretarioSchema = void 0;
+exports.createAlunoSchema = exports.createAddressSchema = exports.createPropinaSchema = exports.createsecretarioSchema = void 0;
 const yup = __importStar(require("yup"));
 const createsecretarioSchema = yup.object({
     primeiroNome: yup.string().required(),
@@ -46,3 +46,15 @@ const createAddressSchema = yup.object({
     rua: yup.string().required()
 });
 exports.createAddressSchema = createAddressSchema;
+const createAlunoSchema = yup.object({
+    nomeCompleto: yup.string().required(),
+    email: yup.string().email(),
+    processo: yup.string().required(),
+    BI: yup.string().required(),
+    classe: yup.string().required(),
+    turma: yup.string().required(),
+    dataNascimento: yup.string().required(),
+    adress_id: yup.string().required(),
+    addressId: yup.number()
+});
+exports.createAlunoSchema = createAlunoSchema;

@@ -7,6 +7,7 @@ import { addressRouter } from "./address.routes";
 const router = Router()
 
 router.use('/secretario',secretarioRouter)
+router.use('/aluno',secretarioRouter)
 router.use('/propina',propinaRouter)
 router.use('/multa',multaRouter)
 router.use('/address',addressRouter)
