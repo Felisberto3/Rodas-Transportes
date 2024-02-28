@@ -10,6 +10,7 @@ class CreateSecretarioController {
     async handle(req, res) {
         const data = req.body;
         try {
+            console.log(data);
             await yup_1.createsecretarioSchema.validate(data);
             const secretario = await this.createSecretarioUseCase.execute(data);
             const { email, id, mainAdmin } = secretario;
