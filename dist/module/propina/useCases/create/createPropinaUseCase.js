@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreatePropinaUseCase = void 0;
-const error_1 = require("error");
+const index_1 = require("../../../../error/index");
 class CreatePropinaUseCase {
     constructor(PropinaRepository) {
         this.PropinaRepository = PropinaRepository;
@@ -10,3 +10,9 @@ class CreatePropinaUseCase {
         try {
             return await this.PropinaRepository.create(data);
         }
+        catch (error) {
+            throw new index_1.ServerError("Falha ao criar a propina", 400);
+        }
+    }
+}
+exports.CreatePropinaUseCase = CreatePropinaUseCase;

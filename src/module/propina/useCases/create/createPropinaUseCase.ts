@@ -1,4 +1,4 @@
-import { ServerError } from "error";
+import { ServerError } from "../../../../error/index";
 import { createPropinaDto } from "../../repository/interface";
 import { PropinaRepository } from "../../repository/repository";
 
