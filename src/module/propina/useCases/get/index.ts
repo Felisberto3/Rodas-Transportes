@@ -4,6 +4,6 @@ import { GetPropinaController } from "./getPropinaController"
 
 const propinaRepository = new PropinaRepository()
 const getPropinaUseCase = new GetPropinaUseCase(propinaRepository)
-const GetPropina = new GetPropinaController(getPropinaUseCase)
+const getPropina = new GetPropinaController(getPropinaUseCase)
 
-export { GetPropina }
+export { getPropina }
