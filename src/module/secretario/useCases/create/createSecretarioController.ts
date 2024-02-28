@@ -10,8 +10,6 @@ class CreateSecretarioController {
         const data = req.body
 
         try {
-            console.log(data);
-            
             await createsecretarioSchema.validate(data)
 
             const secretario = await this.createSecretarioUseCase.execute(data)

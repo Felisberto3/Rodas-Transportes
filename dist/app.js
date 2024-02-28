@@ -31,9 +31,16 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv = __importStar(require("dotenv"));
 const index_1 = require("./router/index");
+const index_2 = require("./error/index");
 dotenv.config();
 const app = (0, express_1.default)();
 exports.app = app;
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(index_1.router);
+app.use((err, req, res, next) => {
+    if (err instanceof index_2.ServerError) {
+        return res.status(err.status).json({ message: err.message });
+    }
+    return res.status(500).json({ message: 'server error' });
+});
