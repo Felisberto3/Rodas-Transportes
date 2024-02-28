@@ -57,8 +57,6 @@ model Address {
 
 model Calendario {
   id        Int      @id @default(autoincrement())
-  mes       String
-  municipio String
   data      DateTime @default(now())
   aluno     Aluno    @relation(fields: [alunoId], references: [id])
   alunoId   Int

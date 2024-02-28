@@ -7,10 +7,8 @@ class GetPagamentoUseCase {
         this.PagamentoRepository = PagamentoRepository;
     }
     async execute(numeroDeFactura) {
-        console.log(numeroDeFactura);
         try {
-            return await this.PagamentoRepository.getByYear(numeroDeFactura);
-            // return await this.PagamentoRepository.get(numeroDeFactura)
+            return await this.PagamentoRepository.get(numeroDeFactura);
         }
         catch (error) {
             throw new index_1.ServerError("Falha ao pegar a Pagamento", 400);

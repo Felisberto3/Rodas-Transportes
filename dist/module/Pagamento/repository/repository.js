@@ -24,8 +24,8 @@ class PagamentoRepository {
         return await prisma_1.prisma.pagamento.findMany({
             where: {
                 AND: [
-                    { createdAt: { gte: new Date(`${Number(year)}-01-01`) } },
-                    { createdAt: { lt: new Date(`${Number(year) + 1}-01-01`) } }
+                    { createdAt: { gte: new Date(`${year}-01-01`) } },
+                    { createdAt: { lt: new Date(`${year + 1}-01-01`) } }
                 ]
             }
         });

@@ -27,12 +27,12 @@ class PagamentoRepository implements PagamentorepositoryDto {
         return true
     }
 
-    async getByYear(year: string) {
+    async getByYear(year: number) {
         return await prisma.pagamento.findMany({
             where: {
                 AND: [
-                    { createdAt: { gte: new Date(`${Number(year)}-01-01`) } },
-                    { createdAt: { lt: new Date(`${Number(year) + 1}-01-01`) } }
+                    { createdAt: { gte: new Date(`${year}-01-01`) } },
+                    { createdAt: { lt: new Date(`${year + 1}-01-01`) } }
                 ]
             }
         })
