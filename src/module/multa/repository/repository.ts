@@ -10,7 +10,7 @@ class MultaRepository implements MultarepositoryDto {
 
     async get(id: number): Promise<Multa | Multa[] | null> {
         if (!id) {
-            return await prisma.multa.findMany()
+            return  await prisma.multa.findMany()
         }
         return await prisma.multa.findFirst({ where: { id } })
     }
