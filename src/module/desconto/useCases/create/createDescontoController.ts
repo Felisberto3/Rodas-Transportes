@@ -13,10 +13,10 @@ class CreateDescontoController {
             
             // await createPropinaSchema.validate(data)
 
-            // const Desconto = await this.createDescontoUseCase.execute(data)
+            const Desconto = await this.createDescontoUseCase.execute(data)
     
             
-            res.status(201).json(data)
+            res.status(201).json(Desconto)
         } catch (error: any) {
             return res.status(400).json({message: error.message})
         }

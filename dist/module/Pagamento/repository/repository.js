@@ -21,7 +21,14 @@ class PagamentoRepository {
         return true;
     }
     async getByYear(year) {
-        // return await prisma.pagamento.findMany({ where: )
+        return await prisma_1.prisma.pagamento.findMany({
+            where: {
+                AND: [
+                    { createdAt: { gte: new Date(`${Number(year)}-01-01`) } },
+                    { createdAt: { lt: new Date(`${Number(year) + 1}-01-01`) } }
+                ]
+            }
+        });
     }
 }
 exports.PagamentoRepository = PagamentoRepository;

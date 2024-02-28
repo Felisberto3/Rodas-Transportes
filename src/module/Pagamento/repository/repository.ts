@@ -2,8 +2,11 @@ import { prisma } from "../../../config/prisma";
 import { PagamentorepositoryDto, createPagamentoDto, updatePagamentoDto } from "./interface";
 import { Pagamento } from "@prisma/client";
 
+interface createFact extends createPagamentoDto { numeroDeFactura: string }
+
+
 class PagamentoRepository implements PagamentorepositoryDto {
-    async create(data: createPagamentoDto): Promise<Pagamento> {
+    async create(data: createFact): Promise<Pagamento> {
         return await prisma.pagamento.create({ data })
     }
 
@@ -15,8 +18,8 @@ class PagamentoRepository implements PagamentorepositoryDto {
         return await prisma.pagamento.findFirst({ where: { numeroDeFactura } })
     }
 
-    async update({ numeroDeFactura, ...data}: updatePagamentoDto): Promise<Boolean > {
-        await prisma.pagamento.update({ where: { numeroDeFactura  }, data })
+    async update({ numeroDeFactura, ...data }: updatePagamentoDto): Promise<Boolean> {
+        await prisma.pagamento.update({ where: { numeroDeFactura }, data })
         return true
     }
     async delete(numeroDeFactura: string): Promise<Boolean> {
@@ -25,7 +28,14 @@ class PagamentoRepository implements PagamentorepositoryDto {
     }
 
     async getByYear(year: string) {
-        // return await prisma.pagamento.findMany({ where: )
+        return await prisma.pagamento.findMany({
+            where: {
+                AND: [
+                    { createdAt: { gte: new Date(`${Number(year)}-01-01`) } },
+                    { createdAt: { lt: new Date(`${Number(year) + 1}-01-01`) } }
+                ]
+            }
+        })
     }
 }
 

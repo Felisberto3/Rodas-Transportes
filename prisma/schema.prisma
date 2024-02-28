@@ -28,7 +28,7 @@ model Aluno {
   Telefone       Telefone[]
   Pagamento      Pagamento[]
   createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @default(now())
+  updatedAt      DateTime     @default(now()) @updatedAt()
 }
 
 model Secretario {
@@ -42,7 +42,7 @@ model Secretario {
   Telefone     Telefone[]
   Pagamento    Pagamento[]
   createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @default(now())
+  updatedAt    DateTime    @default(now()) @updatedAt()
 }
 
 model Address {
@@ -63,7 +63,7 @@ model Calendario {
   aluno     Aluno    @relation(fields: [alunoId], references: [id])
   alunoId   Int
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt()
 }
 
 model Telefone {
@@ -75,7 +75,7 @@ model Telefone {
   secretario   Secretario? @relation(fields: [secretarioId], references: [id])
   secretarioId Int?
   createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @default(now())
+  updatedAt    DateTime    @default(now()) @updatedAt()
 }
 
 enum formaDePagamentoEnum {
@@ -87,6 +87,7 @@ model Pagamento {
   numeroDeFactura  String               @id @unique
   formaDePagamento formaDePagamentoEnum
   quantidade       Int                  @default(1)
+  currentYear      Int
   mes              String
   aluno            Aluno?               @relation(fields: [alunoId], references: [id])
   alunoId          Int?
@@ -99,7 +100,7 @@ model Pagamento {
   desconto         Desconto?            @relation(fields: [descontoId], references: [id])
   descontoId       Int?
   createdAt        DateTime             @default(now())
-  updatedAt        DateTime             @default(now())
+  updatedAt        DateTime             @default(now()) @updatedAt()
 }
 
 model Propina {
@@ -108,7 +109,7 @@ model Propina {
   valor     Int
   Pagamento Pagamento[]
   createdAt DateTime    @default(now())
-  updatedAt DateTime    @default(now())
+  updatedAt DateTime    @default(now()) @updatedAt()
 }
 
 model Multa {
@@ -117,7 +118,7 @@ model Multa {
   valor     Int
   Pagamento Pagamento[]
   createdAt DateTime    @default(now())
-  updatedAt DateTime    @default(now())
+  updatedAt DateTime    @default(now()) @updatedAt()
 }
 
 model Desconto {
@@ -126,5 +127,5 @@ model Desconto {
   valor     Int
   Pagamento Pagamento[]
   createdAt DateTime    @default(now())
-  updatedAt DateTime    @default(now())
+  updatedAt DateTime    @default(now()) @updatedAt()
 }

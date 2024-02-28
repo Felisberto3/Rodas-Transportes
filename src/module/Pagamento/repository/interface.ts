@@ -1,15 +1,18 @@
 import { Pagamento } from '@prisma/client'
 interface createPagamentoDto {
-    numeroDeFactura: string;
-    formaDePagamento: "multicaixa" | "deposito";
     quantidade: number;
+    formaDePagamento: "multicaixa" | "deposito";
+    currentYear: number;
     mes: string;
     alunoId: number | null;
     secretarioId: number | null;
-    propinaId: number | null;
-    multaId: number | null;
-    descontoId: number | null;
+    propinaId: number
+    multaId: number
+    descontoId: number
+    createdAt: Date;
+    updatedAt: Date;
 }
+
 
 interface updatePagamentoDto {
     numeroDeFactura: string;

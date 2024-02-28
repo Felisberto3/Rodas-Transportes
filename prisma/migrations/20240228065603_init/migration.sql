@@ -9,6 +9,8 @@ CREATE TABLE `Aluno` (
     `turma` VARCHAR(191) NOT NULL,
     `dataNascimento` DATETIME(3) NOT NULL,
     `addressId` INTEGER NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     UNIQUE INDEX `Aluno_processo_key`(`processo`),
     UNIQUE INDEX `Aluno_BI_key`(`BI`),
@@ -24,6 +26,8 @@ CREATE TABLE `Secretario` (
     `password` VARCHAR(191) NOT NULL,
     `mainAdmin` BOOLEAN NOT NULL,
     `addressId` INTEGER NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     UNIQUE INDEX `Secretario_email_key`(`email`),
     UNIQUE INDEX `Secretario_addressId_key`(`addressId`),
@@ -48,6 +52,8 @@ CREATE TABLE `Calendario` (
     `municipio` VARCHAR(191) NOT NULL,
     `data` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `alunoId` INTEGER NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -59,6 +65,8 @@ CREATE TABLE `Telefone` (
     `municipio` VARCHAR(191) NOT NULL,
     `alunoId` INTEGER NULL,
     `secretarioId` INTEGER NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -68,12 +76,15 @@ CREATE TABLE `Pagamento` (
     `numeroDeFactura` VARCHAR(191) NOT NULL,
     `formaDePagamento` ENUM('multicaixa', 'deposito') NOT NULL,
     `quantidade` INTEGER NOT NULL DEFAULT 1,
+    `currentYear` INTEGER NOT NULL,
     `mes` VARCHAR(191) NOT NULL,
     `alunoId` INTEGER NULL,
     `secretarioId` INTEGER NULL,
     `propinaId` INTEGER NULL,
     `multaId` INTEGER NULL,
     `descontoId` INTEGER NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     UNIQUE INDEX `Pagamento_numeroDeFactura_key`(`numeroDeFactura`),
     PRIMARY KEY (`numeroDeFactura`)
@@ -84,6 +95,8 @@ CREATE TABLE `Propina` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `descricao` VARCHAR(191) NOT NULL,
     `valor` INTEGER NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     UNIQUE INDEX `Propina_descricao_key`(`descricao`),
     PRIMARY KEY (`id`)
@@ -94,6 +107,8 @@ CREATE TABLE `Multa` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `descricao` VARCHAR(191) NOT NULL,
     `valor` INTEGER NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     UNIQUE INDEX `Multa_descricao_key`(`descricao`),
     PRIMARY KEY (`id`)
@@ -104,6 +119,8 @@ CREATE TABLE `Desconto` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `descricao` VARCHAR(191) NOT NULL,
     `valor` INTEGER NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     UNIQUE INDEX `Desconto_descricao_key`(`descricao`),
     PRIMARY KEY (`id`)

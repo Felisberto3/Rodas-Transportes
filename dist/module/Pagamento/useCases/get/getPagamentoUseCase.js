@@ -9,10 +9,11 @@ class GetPagamentoUseCase {
     async execute(numeroDeFactura) {
         console.log(numeroDeFactura);
         try {
-            return await this.PagamentoRepository.get(numeroDeFactura);
+            return await this.PagamentoRepository.getByYear(numeroDeFactura);
+            // return await this.PagamentoRepository.get(numeroDeFactura)
         }
         catch (error) {
-            throw new index_1.ServerError("Falha ao criar a Pagamento", 400);
+            throw new index_1.ServerError("Falha ao pegar a Pagamento", 400);
         }
     }
 }

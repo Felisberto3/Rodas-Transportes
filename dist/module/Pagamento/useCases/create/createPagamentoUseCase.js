@@ -10,11 +10,10 @@ class CreatePagamentoUseCase {
     async execute(data) {
         try {
             const numeroDeFactura = (0, geraNumeroDeFactura_1.geraNumeroDeFactura)();
-            return numeroDeFactura;
-            // return await this.PagamentoRepository.create(data)
+            return await this.PagamentoRepository.create({ numeroDeFactura, ...data });
         }
         catch (error) {
-            throw new index_1.ServerError("Falha ao criar a Pagamento", 400);
+            throw new index_1.ServerError(error.message, 400);
         }
     }
 }
